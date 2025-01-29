@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Libro</title>
+</head>
+<body>
+{% block body %}
+    <table>
+        <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Año Publicación</th>
+            <th>Páginas</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for libro in libros %}
+            <tr>
+                <td>
+                    <a href="{{ path('libro_detalle', {'id': libro.id}) }}">
+                        {{libro.titulo}}
+                    </a>
+                </td>
+                <td>{{ libro.anioPublicacion }}</td>
+                <td>{{ libro.paginas }}</td>
+            </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">No hay libros</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+</body>
+</html>
